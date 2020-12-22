@@ -1,6 +1,8 @@
 # AndroidProjectBase
 [![](https://jitpack.io/v/adench/AndroidProjectBase.svg)](https://jitpack.io/#adench/AndroidProjectBase)
+
 android project about some utils
+
 How to
 To get a Git project into your build:
 
