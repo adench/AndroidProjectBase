@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.xqkj.projectbase"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -26,4 +26,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation project(':baselibrary')
 }
