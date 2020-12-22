@@ -23,5 +23,5 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.adench:AndroidProjectBase:Tag'
+	        implementation 'com.github.adench:AndroidProjectBase:1.0.1'
 	}
