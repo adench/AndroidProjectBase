@@ -1,6 +1,8 @@
 # AndroidProjectBase
 [![](https://jitpack.io/v/adench/AndroidProjectBase.svg)](https://jitpack.io/#adench/AndroidProjectBase)
+
 android project about some utils
+
 How to
 To get a Git project into your build:
 
@@ -21,5 +23,5 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.adench:AndroidProjectBase:Tag'
+	        implementation 'com.github.adench:AndroidProjectBase:1.0.1'
 	}
