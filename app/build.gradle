@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def keystorePropertiesFile = file("app_config.properties")
+def kProperties = new Properties()
+kProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -11,10 +15,67 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    /** 配置签名文件 **/
+    signingConfigs {
         release {
-            minifyEnabled false
+            keyAlias kProperties['keyAlias']
+            keyPassword kProperties['keyPassword']
+            storeFile file(kProperties['storeFile'])
+            storePassword kProperties['storePassword']
+        }
+
+        debug {
+            keyAlias kProperties['keyAlias']
+            keyPassword kProperties['keyPassword']
+            storeFile file(kProperties['storeFile'])
+            storePassword kProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {// 生产环境
+            minifyEnabled false//是否对代码进行混淆
+            //指定混淆的规则文件
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // 配置URL前缀
+            buildConfigField("String", "BASE_URL", kProperties['RELEASE_BASE_URL'])
+
+            // 移除无用的resource文件
+            shrinkResources false
+            signingConfig signingConfigs.release//设置签名信息
+            zipAlignEnabled true//是否对APK包执行ZIP对齐优化，减小zip体积，增加运行效率
+
+            //批量打包(gradle 3.0.0 以上)
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def fileName = "demo_online_${defaultConfig.versionName}.apk"
+                    outputFileName = fileName
+                }
+            }
+        }
+        debug {// 测试环境
+            //是否对代码进行混淆
+            minifyEnabled false
+            //指定混淆的规则文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // 配置URL前缀
+            buildConfigField("String", "BASE_URL", kProperties['DEBUG_BASE_URL'])
+
+            // 移除无用的resource文件
+            shrinkResources false
+            signingConfig signingConfigs.debug//设置签名信息
+            zipAlignEnabled true//是否对APK包执行ZIP对齐优化，减小zip体积，增加运行效率
+
+            //批量打包(gradle 3.0.0 以上)
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def fileName = "demo_test_${defaultConfig.versionName}.apk"
+                    outputFileName = fileName
+                }
+            }
         }
     }
 }
