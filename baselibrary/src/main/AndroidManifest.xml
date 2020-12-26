@@ -1,2 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xqkj.baselibrary" />
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.xqkj.baselibrary">
+
+    <uses-sdk tools:overrideLibrary="com.luck.picture.lib,com.yalantis.ucrop,com.scwang.smart.refresh.layout.kernel,
+    com.scwang.smart.refresh.header.classics,com.scwang.smart.refresh.footer.classics,com.scwang.smart.drawable.paint" />
+
+</manifest>

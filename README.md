@@ -26,5 +26,19 @@ Step 2. Add the dependency
 	        implementation 'com.github.adench:AndroidProjectBase:1.0.2'
 	}
 
+启动页
+
+网络框架
+
+支付
+
+分享
+
+版本更新
+
+webview
+
+
 #项目所属
+
 郑州小千科技有限公司

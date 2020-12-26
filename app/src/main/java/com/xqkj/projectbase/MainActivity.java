@@ -1,19 +1,23 @@
 package com.xqkj.projectbase;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-import com.xqkj.baselibrary.utils.DataUtils;
 
 
-public class MainActivity extends AppCompatActivity {
+import com.xqkj.baselibrary.base.BaseActivity;
+
+
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
-        DataUtils.formatData(1001);
+    @Override
+    protected void initView() {
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }
