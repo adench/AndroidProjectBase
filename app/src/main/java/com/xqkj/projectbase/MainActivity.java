@@ -13,11 +13,18 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected boolean isShowBacking() {
+        return true;
+    }
+
+    @Override
     protected void initView() {
+        setHeaderTitle("主页");
+
     }
 
     @Override
     protected void initData() {
-
+        
     }
 }
