@@ -163,10 +163,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         });
     }
 
-
     protected boolean isShowBacking() {
         return false;
     }
+    protected boolean isImmersionBar(){return false;}
 
     protected boolean isShowMessageButton() {
         return false;
@@ -183,11 +183,26 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     //设置状态栏
     protected void setStatusBar() {
+        if(isImmersionBar()){
+            statusBarImmersion();
+        }else{
+            statusBarTitle();
+        }
+    }
+
+    //带标题的bar
+    private void statusBarTitle(){
         ImmersionBar.with(this)
                 .statusBarDarkFont(true, 0.2f)
                 .fitsSystemWindows(true)
                 .statusBarColor(R.color.tool_color)
                 .keyboardEnable(false)
+                .init();
+    }
+    //沉浸式bar
+    private void statusBarImmersion(){
+        ImmersionBar.with(this)
+                .statusBarDarkFont(true, 0.2f)
                 .init();
     }
 

@@ -76,9 +76,9 @@ android {
             variant.outputs.all {
                 def isRelease = variant.buildType.name.contains('release')
                 def fileName = "demo.apk"
-                if(isRelease){
+                if (isRelease) {
                     fileName = "demo_release_${defaultConfig.versionName}.apk"
-                }else{
+                } else {
                     fileName = "demo_debug_${defaultConfig.versionName}.apk"
                 }
                 outputFileName = fileName
@@ -95,6 +95,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'com.android.support:appcompat-v7:30.+'
 
     api project(':baselibrary')
 }

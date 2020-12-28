@@ -1,9 +1,8 @@
-package com.xqkj.projectbase;
+package com.xqkj.projectbase.activity;
 
 
-
-import com.xqkj.baselibrary.base.BaseActivity;
-
+import com.xqkj.projectbase.R;
+import com.xqkj.projectbase.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
