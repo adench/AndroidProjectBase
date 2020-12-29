@@ -40,7 +40,7 @@ public class WellComeActivity extends BaseActivity {
                 skipAfter();
                 break;
             case R.id.iv_advert://广告
-                UIHelper.showWebActivity(this,"牛年大吉","https://www.jd.com/");
+                UIHelper.showWebActivity(this,"牛年大吉","https://www.baidu.com/");
                 skipAfter();
                 break;
         }
