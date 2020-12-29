@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.xqkj.baselibrary.activity.WebActivity;
+
 public class UIHelper {
     public static void showCommonBundleActivity(Context context, Bundle bundle, Class<?> mclass) {
         Intent intent = new Intent(context, mclass);
@@ -26,6 +28,13 @@ public class UIHelper {
         Intent intent = new Intent(context, mclass);
         intent.putExtra("bundle", bundle);
         ((Activity)context).startActivityForResult(intent,requestCode);
+    }
+
+    public static void showWebActivity(Context context,String title,String url){
+        Bundle bundle = new Bundle();
+        bundle.putString("title",title);
+        bundle.putString("url",url);
+        showCommonBundleActivity(context,bundle, WebActivity.class);
     }
 
 }

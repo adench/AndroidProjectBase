@@ -10,10 +10,15 @@ import com.xqkj.projectbase.R;
 public class LaunchActivity extends BaseActivity {
 
     private Handler handler = new Handler();
-    private int waitTime = 3000;
+    private int waitTime = 2000;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_launch;
+    }
+
+    @Override
+    protected boolean isImmersionBar() {
+        return true;
     }
 
     @Override
@@ -21,7 +26,8 @@ public class LaunchActivity extends BaseActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                UIHelper.showCommonBundleActivity(LaunchActivity.this,WellComeActivity.class);
+                UIHelper.showCommonBundleActivity(LaunchActivity.this,MainActivity.class);
+                LaunchActivity.this.finish();
             }
         },waitTime);
     }

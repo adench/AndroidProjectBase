@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".activity.LaunchActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon_logo"
+        android:src="@mipmap/sign_logo"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         />
 
     <LinearLayout
@@ -25,16 +28,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="郑州小千科技"
-            android:textSize="14dp"
+            android:textSize="13dp"
             android:textColor="#191919"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="版权所有    2020-2021"
+            android:text="Copyright ©2020-2021"
             android:layout_marginTop="3dp"
             android:textColor="#999999"
-            android:textSize="13dp"
+            android:textSize="11dp"
             />
     </LinearLayout>
 </RelativeLayout>

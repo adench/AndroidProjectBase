@@ -46,6 +46,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityManager.getAppManager().addActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//键盘模式
+        //加载view前操作
+        beforeContentView();
         setContentView(R.layout.activity_base);
         LinearLayout llView = (LinearLayout) findViewById(R.id.base_view);//这两句勿动
         llView.addView(LayoutInflater.from(this).inflate(getLayoutId(), llView, false), ViewGroup.LayoutParams.MATCH_PARENT);
@@ -71,6 +73,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    protected Bundle getBundle(){
+        return getIntent().getBundleExtra("bundle");
     }
 
     @Override
@@ -123,6 +129,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initView();
 
     protected abstract void initData();
+
+    protected void beforeContentView(){};
 
     //设置标题
     protected void setHeaderTitle(String title) {

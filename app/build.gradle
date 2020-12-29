@@ -98,4 +98,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:30.+'
 
     api project(':baselibrary')
+    annotationProcessor "com.jakewharton:butterknife-compiler:10.2.3"
 }

@@ -1,8 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xqkj.baselibrary">
 
-    <uses-sdk tools:overrideLibrary="com.luck.picture.lib,com.yalantis.ucrop,com.scwang.smart.refresh.layout.kernel,
-    com.scwang.smart.refresh.header.classics,com.scwang.smart.refresh.footer.classics,com.scwang.smart.drawable.paint" />
+    <uses-sdk tools:overrideLibrary="com.luck.picture.lib,com.yalantis.ucrop,com.scwang.smart.refresh.layout.kernel,     com.scwang.smart.refresh.header.classics,com.scwang.smart.refresh.footer.classics,com.scwang.smart.drawable.paint" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"></uses-permission>
+    <application>
+        <activity android:name=".activity.WebActivity" android:theme="@style/AppBaseTheme"></activity>
+    </application>
 
 </manifest>

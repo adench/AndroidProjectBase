@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppBaseTheme">
-        <activity android:name=".activity.WellComeActivity"></activity>
+        <activity android:name=".activity.WellComeActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.LaunchActivity">
             <intent-filter>
