@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.xqkj.baselibrary.activity.WebActivity;
+import com.xqkj.baselibrary.web.WebActivity;
 
 public class UIHelper {
     public static void showCommonBundleActivity(Context context, Bundle bundle, Class<?> mclass) {

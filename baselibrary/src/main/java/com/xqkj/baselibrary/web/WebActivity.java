@@ -1,4 +1,4 @@
-package com.xqkj.baselibrary.activity;
+package com.xqkj.baselibrary.web;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
