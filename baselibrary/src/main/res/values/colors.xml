@@ -5,5 +5,6 @@
     <color name="colorAccent">#5873FD</color>
 
     <color name="tool_color">#ffffff</color>
-
+    <color name="tab_select">#5873FD</color>
+    <color name="tab_normal">#B4B4B4</color>
 </resources>
