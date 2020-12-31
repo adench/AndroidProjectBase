@@ -3,6 +3,7 @@ package com.xqkj.baselibrary.utils;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
 
 public class ApplicationInitUtils {
@@ -22,7 +23,8 @@ public class ApplicationInitUtils {
         CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
         strategy.setUploadProcess(processName == null || processName.equals(packageName));
         // 初始化Bugly
-        CrashReport.initCrashReport(context, appid, true, strategy);
+//        CrashReport.initCrashReport(context, appid, true, strategy);
+        Bugly.init(context, appid, true,strategy);
         if(!TextUtils.isEmpty(userId)) {
             CrashReport.setUserId(userId);
         }
