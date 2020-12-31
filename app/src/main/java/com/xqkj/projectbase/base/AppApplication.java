@@ -27,4 +27,13 @@ public class AppApplication extends BaseApplication {
     public String[] bugly() {
         return new String[]{"e31bb68e36"};
     }
+
+    /**
+     * 版本更新 true更新
+     * @return
+     */
+    @Override
+    public boolean isUpdateApp() {
+        return true;
+    }
 }

@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
+import androidx.multidex.MultiDex;
+
+import com.tencent.bugly.beta.Beta;
 import com.xqkj.baselibrary.utils.ApplicationInitUtils;
 
 public class BaseApplication extends Application {
@@ -22,16 +25,29 @@ public class BaseApplication extends Application {
 
         //设置bugly
         String[] bugly = bugly();
-        if(bugly != null && bugly.length > 0){
+        if (bugly != null && bugly.length > 0) {
             String appid = bugly[0];
             String userId = "";
-            if(bugly.length >= 2){
+            if (bugly.length >= 2) {
                 userId = bugly[1];
             }
-            ApplicationInitUtils.bugly(mContext,appid,userId);
+            ApplicationInitUtils.bugly(mContext, appid, userId);
+
         }
+
+        Beta.autoCheckUpgrade = isUpdateApp();
     }
 
-    public String[] bugly(){ return null;}
+    public String[] bugly() {
+        return null;
+    }
 
+    public boolean isUpdateApp() {
+        return false;
+    }
+
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        MultiDex.install(this);
+    }
 }
