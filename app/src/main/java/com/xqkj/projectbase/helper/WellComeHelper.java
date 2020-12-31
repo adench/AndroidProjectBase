@@ -2,8 +2,6 @@ package com.xqkj.projectbase.helper;
 
 import android.content.Context;
 
-import com.xqkj.baselibrary.net.HttpCallBack;
-import com.xqkj.baselibrary.net.HttpRequest;
 import com.xqkj.baselibrary.splashscreen.SplashScreenHelper;
 
 public class WellComeHelper extends SplashScreenHelper {
