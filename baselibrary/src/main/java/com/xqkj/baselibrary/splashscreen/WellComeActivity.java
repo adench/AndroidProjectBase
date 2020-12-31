@@ -8,6 +8,7 @@ import android.os.RemoteException;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xqkj.baselibrary.R;
@@ -24,11 +25,13 @@ import butterknife.OnClick;
 import static com.xqkj.baselibrary.splashscreen.SplashScreenHelper.INIT_DATA;
 import static com.xqkj.baselibrary.splashscreen.SplashScreenHelper.INIT_VIEW;
 
-public class WellComeActivity extends BaseActivity {
+public class WellComeActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R2.id.tv_count)
     TextView tv_count;
     @BindView(R2.id.iv_advert)
     ImageView iv_advert;
+    @BindView(R2.id.ll_skip)
+    LinearLayout ll_skip;
 
     private int interval = 1000;
     private int countTime = 5 * interval;
@@ -53,6 +56,7 @@ public class WellComeActivity extends BaseActivity {
             messenger = bundle.getParcelable("messenger");
             countTime = bundle.getInt("count_time") * interval;
         }
+
         sendMessage(INIT_VIEW, null);
         tv_count.setText(countTime / interval + "");
     }
@@ -70,16 +74,16 @@ public class WellComeActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R2.id.ll_skip, R2.id.iv_advert})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R2.id.ll_skip://跳过
-                skipAfter();
-                break;
-            case R2.id.iv_advert://广告
+    @OnClick({R2.id.ll_skip,R2.id.iv_advert})
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.ll_skip) {//跳过
+            skipAfter();
+        } else if (id == R.id.iv_advert) {//广告
+            if(!TextUtils.isEmpty(advertUrl)) {
                 WebHelper.show(this, advertTitle, advertUrl);
                 skipAfter();
-                break;
+            }
         }
     }
 
@@ -145,6 +149,8 @@ public class WellComeActivity extends BaseActivity {
             case EventCode.SPLASH_IMG:
                 SplashImgeBean bean = (SplashImgeBean) event.getData();
                 if (bean != null) {
+                    advertUrl = bean.getWebUrl();
+                    advertTitle = bean.getWebTitle();
                     if (bean.isNet()) {
                         showAdertImage(bean.getUrl());
                     } else {
@@ -154,4 +160,5 @@ public class WellComeActivity extends BaseActivity {
                 break;
         }
     }
+
 }

@@ -15,6 +15,7 @@ public class WellComeHelper extends SplashScreenHelper {
     @Override
     protected void initData() {
         super.initData();
-        notifyShowImage("http://pic346.nipic.com/file/20201126/32357757_184530234082_2.jpg");
+        notifyShowImage("http://pic346.nipic.com/file/20201126/32357757_184530234082_2.jpg",
+                "https://www.baidu.com/","百度官网");
     }
 }

@@ -5,13 +5,20 @@ public class SplashImgeBean {
     private int res;
     private String url;
 
-    public SplashImgeBean(int res){
+    private String webUrl;
+    private String webTitle;
+
+    public SplashImgeBean(int res,String webUrl,String webTitle){
         this.isNet = false;
         this.res = res;
+        this.webUrl = webUrl;
+        this.webTitle = webTitle;
     }
-    public SplashImgeBean(String url){
+    public SplashImgeBean(String url,String webUrl,String webTitle){
         this.isNet = true;
         this.url = url;
+        this.webUrl = webUrl;
+        this.webTitle = webTitle;
     }
 
     public boolean isNet() {
@@ -36,5 +43,21 @@ public class SplashImgeBean {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getWebUrl() {
+        return webUrl;
+    }
+
+    public void setWebUrl(String webUrl) {
+        this.webUrl = webUrl;
+    }
+
+    public String getWebTitle() {
+        return webTitle;
+    }
+
+    public void setWebTitle(String webTitle) {
+        this.webTitle = webTitle;
     }
 }
