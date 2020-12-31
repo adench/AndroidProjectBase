@@ -26,7 +26,7 @@ Step 2. Add the dependency
 	        implementation 'com.github.adench:AndroidProjectBase:1.0.2'
 	}
 
-启动页
+##启动页
 
 创建WellComeHelper辅助类集成SplashScreenHelper，在initData中设置通知数据
 
@@ -47,13 +47,14 @@ Step 2. Add the dependency
         }
     }
 
-网络框架
+##网络框架
 
 post请求调用post(url),get请求调用get(url).如果上传参数复杂,可调用postJson(url,map),map为Map<String,Object>,可满足复杂json拼接
 setClazz(cls)是请求后需要解析的对象，如果请求结果为集合，传item对象即可，在success(Object object)中，object直接强转为cls,cls=object,
 如果是集合，需要强制转化为List<cls>
 
     HttpRequest.init(this).post(url).setShowDialog(true).setMap(map).setClazz(cls).excute(new HttpCallBack() {
+
         @Override
         public void success(Object object) {
             cls = object;
@@ -65,19 +66,22 @@ setClazz(cls)是请求后需要解析的对象，如果请求结果为集合，�
         }
     });
 
-支付
-
-分享
-
-版本更新
-
-webview
+##WebView
 
 advertTitle 是web页标题，advertUrl是web访问的url
 
     WebHelper.show(this, advertTitle, advertUrl);
 
 
-#项目所属
+##支付
+
+##分享
+
+##版本更新
+
+
+
+
+##项目贡献
 
 郑州小千科技有限公司
