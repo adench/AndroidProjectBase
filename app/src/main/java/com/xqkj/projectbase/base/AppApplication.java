@@ -17,8 +17,14 @@ public class AppApplication extends BaseApplication {
 
     }
 
+    /**
+     * 设置bugly
+     * 第一个参数 appid
+     * 第二个参数 用户id
+     * @return
+     */
     @Override
     public String[] bugly() {
-        return new String[]{""};
+        return new String[]{"e31bb68e36"};
     }
 }
