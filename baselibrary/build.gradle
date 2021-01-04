@@ -84,5 +84,5 @@ dependencies {
     implementation 'com.tencent.bugly:crashreport:latest.release'
 
     //webview
-    implementation 'com.just.agentweb:agentweb-androidx:4.1.4' // (必选)
+    implementation 'com.just.agentweb:agentweb-androidx:4.1.4'
 }

@@ -6,6 +6,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.xqkj.baselibrary.base.BaseActivity;
 import com.xqkj.baselibrary.config.EventCode;
 import com.xqkj.baselibrary.utils.EventBusUtil;
 import com.xqkj.baselibrary.utils.GlideUtils;
+import com.xqkj.baselibrary.utils.ToastUtil;
 import com.xqkj.baselibrary.web.WebHelper;
 
 import butterknife.BindView;
