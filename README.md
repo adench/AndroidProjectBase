@@ -47,6 +47,10 @@ Step 2. Add the dependency
         }
     }
 
+一句话调用
+
+    new WellComeHelper(this).toIntent();
+
 ##网络框架
 
 post请求调用post(url),get请求调用get(url).如果上传参数复杂,可调用postJson(url,map),map为Map<String,Object>,可满足复杂json拼接
