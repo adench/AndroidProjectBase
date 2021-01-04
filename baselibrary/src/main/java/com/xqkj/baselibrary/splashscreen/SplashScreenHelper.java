@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -17,7 +16,7 @@ public class SplashScreenHelper {
     public final static int INIT_VIEW = 0x001;
     public final static int INIT_DATA = 0x002;
     private Context mContext;
-    private int countTime = 6;
+    private int countTime = 5;
     public SplashScreenHelper(Context context){
         this.mContext = context;
     }
@@ -53,10 +52,10 @@ public class SplashScreenHelper {
     protected void initView(){};
     protected void initData(){};
 
-    public void notifyShowImage(int res){
-        EventBusUtil.sendEvent(new EventBusUtil.MessageEvent(EventCode.SPLASH_IMG,new SplashImgeBean(res)));
+    public void notifyShowImage(int res,String webUrl,String webTitile){
+        EventBusUtil.sendEvent(new EventBusUtil.MessageEvent(EventCode.SPLASH_IMG,new SplashImgeBean(res,webUrl,webTitile)));
     }
-    public void notifyShowImage(String url){
-        EventBusUtil.sendEvent(new EventBusUtil.MessageEvent(EventCode.SPLASH_IMG,new SplashImgeBean(url)));
+    public void notifyShowImage(String url,String webUrl,String webTitile){
+        EventBusUtil.sendEvent(new EventBusUtil.MessageEvent(EventCode.SPLASH_IMG,new SplashImgeBean(url,webUrl,webTitile)));
     }
 }
