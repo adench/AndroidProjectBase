@@ -34,18 +34,6 @@
             android:background="@drawable/shadow_line_bottom" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/icon_center"
-            android:layout_alignParentTop="true"
-            />
-    </RelativeLayout>
+
 </RelativeLayout>
