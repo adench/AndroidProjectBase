@@ -31,7 +31,7 @@ public class CenterAddActivity extends BaseActivity {
     @Override
     protected void initView() {
         ObjectAnimator animator = ObjectAnimator.ofFloat(iv_add, "rotation", 0, 45);
-        animator.setDuration(1000);
+        animator.setDuration(500);
         animator.start();
     }
 
@@ -40,7 +40,7 @@ public class CenterAddActivity extends BaseActivity {
         switch (view.getId()){
             case R.id.iv_add:
                 ObjectAnimator animator = ObjectAnimator.ofFloat(iv_add, "rotation", 45, 0);
-                animator.setDuration(1000);
+                animator.setDuration(500);
                 animator.start();
                 animator.addListener(new AnimatorListenerAdapter() {
                     @Override
