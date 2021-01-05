@@ -3,11 +3,10 @@ package com.xqkj.projectbase.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.xqkj.baselibrary.utils.AnimatorUtils;
 import com.xqkj.projectbase.R;
 import com.xqkj.projectbase.base.BaseActivity;
 
@@ -30,26 +29,20 @@ public class CenterAddActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(iv_add, "rotation", 0, 45);
-        animator.setDuration(500);
-        animator.start();
+        AnimatorUtils.rotation(iv_add,0,45,500);
     }
 
     @OnClick({R.id.iv_add})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.iv_add:
-                ObjectAnimator animator = ObjectAnimator.ofFloat(iv_add, "rotation", 45, 0);
-                animator.setDuration(500);
-                animator.start();
-                animator.addListener(new AnimatorListenerAdapter() {
+                AnimatorUtils.rotation(iv_add,45,0,500).addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         CenterAddActivity.this.finish();
                     }
                 });
-
                 break;
         }
     }

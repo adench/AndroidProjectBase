@@ -19,7 +19,7 @@
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="60dp"
             android:background="#ffffff"
             tl:tl_iconHeight="24dp"
             tl:tl_iconWidth="24dp"
