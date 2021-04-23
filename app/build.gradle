@@ -98,5 +98,11 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:30.+'
 
     api project(':baselibrary')
-    annotationProcessor "com.jakewharton:butterknife-compiler:10.2.3"
+
+    //view注解
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    //tab
+    implementation'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 }
