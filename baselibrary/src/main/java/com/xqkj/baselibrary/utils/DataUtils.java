@@ -2,6 +2,7 @@ package com.xqkj.baselibrary.utils;
 
 import android.text.TextUtils;
 
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -35,5 +36,18 @@ public class DataUtils {
      */
     public static String replaceTag(String str, String oldTag, String newTag){
         return str.replace(oldTag,newTag);
+    }
+
+    /**
+     * 格式化金额
+     */
+    public static String formatPrice(String str){
+        if(TextUtils.isEmpty(str)){
+            return "0";
+        }
+        NumberFormat nf = NumberFormat.getInstance();
+        String numStr = nf.format(Double.parseDouble(str));
+        numStr = numStr.replace(",","");
+        return numStr;
     }
 }

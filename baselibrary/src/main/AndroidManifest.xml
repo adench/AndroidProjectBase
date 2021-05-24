@@ -38,6 +38,14 @@
                 android:resource="@xml/provider_paths"
                 tools:replace="name,resource"/>
         </provider>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="appkey" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="BASE_LIBRARY" />
+
     </application>
 
 </manifest>

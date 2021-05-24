@@ -14,6 +14,12 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                JSHARE_PKGNAME : applicationId,
+                JPUSH_APPKEY : "appkey", //极光控制台创建应用得到的AppKey.
+                JPUSH_CHANNEL : "baselibrary", //暂时填写默认值即可.
+        ]
     }
 
     /** 配置签名文件 **/
@@ -97,7 +103,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.android.support:appcompat-v7:30.+'
 
-    api project(':baselibrary')
+    implementation project(':baselibrary')
 
     //view注解
     implementation 'com.jakewharton:butterknife:10.2.3'
