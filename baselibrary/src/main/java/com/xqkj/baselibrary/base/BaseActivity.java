@@ -23,6 +23,7 @@ import com.xqkj.baselibrary.R;
 import com.xqkj.baselibrary.R2;
 import com.xqkj.baselibrary.utils.ActivityManager;
 import com.xqkj.baselibrary.utils.EventBusUtil;
+import com.xqkj.baselibrary.utils.StatusBarUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -209,9 +210,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     //沉浸式bar
     private void statusBarImmersion(){
-        ImmersionBar.with(this)
-                .statusBarDarkFont(true, 0.2f)
-                .init();
+        StatusBarUtil.setImmersionBar(this,true);
     }
 
     @Override

@@ -1,5 +1,5 @@
 # AndroidProjectBase
-[![](https://jitpack.io/v/adench/AndroidProjectBase.svg)](https://jitpack.io/#adench/AndroidProjectBase)
+[![](https://www.jitpack.io/v/adench/AndroidProjectBase.svg)](https://www.jitpack.io/#adench/AndroidProjectBase)
 
 android项目所需工具类，activity基础类，加载等待弹窗，json封装，okgo网络框架封装，数据处理工具，沉浸式状态栏，后续工具还在继续更新中
 
