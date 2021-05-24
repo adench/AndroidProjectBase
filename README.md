@@ -23,7 +23,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.adench:AndroidProjectBase:1.0.3'
+	        implementation 'com.github.adench:AndroidProjectBase:tag'
 	}
 
 ##启动页
