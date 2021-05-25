@@ -13,6 +13,7 @@ public class DataUtils {
         return String.format("%2d", str).replace(" ", "0");
     }
 
+    //判断数组
     public static boolean isNumberic(String str){
         Pattern pattern = Pattern.compile("[0-9]*");
         return pattern.matcher(str).matches();
@@ -49,5 +50,20 @@ public class DataUtils {
         String numStr = nf.format(Double.parseDouble(str));
         numStr = numStr.replace(",","");
         return numStr;
+    }
+
+    //集合转数组
+    public static String[] listToArrayString(List<?> list){
+        if(list == null){
+            return new String[]{};
+        }
+        return (String[])list.toArray(new String[list.size()]);
+    }
+
+    public static Integer[] listToArrayInt(List<?> list){
+        if(list == null){
+            return new Integer[]{};
+        }
+        return (Integer[])list.toArray(new Integer[list.size()]);
     }
 }

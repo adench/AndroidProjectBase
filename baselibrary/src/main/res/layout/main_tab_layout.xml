@@ -29,6 +29,7 @@
             tl:tl_textsize="13dp" />
 
         <View
+            android:id="@+id/shadow_line"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:background="@drawable/shadow_line_bottom" />
