@@ -1,21 +1,24 @@
-package com.xqkj.baselibrary.weight;
+package com.xqkj.baselibrary.view;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
 import com.xqkj.baselibrary.R;
 import com.xqkj.baselibrary.R2;
 import com.xqkj.baselibrary.maintab.MainTabHelper;
-import com.xqkj.baselibrary.maintab.TabEntity;
+import com.xqkj.baselibrary.maintab.TabBaseEntity;
 import com.xqkj.baselibrary.utils.LayoutInflaterUtils;
+import com.xqkj.baselibrary.weight.NoScrollViewPager;
 
 import java.util.ArrayList;
 
@@ -48,7 +51,7 @@ public class MainTabView extends RelativeLayout {
     private FragmentManager fragmentManager;
     private int textSelectColor;
     private int textDefaultColor;
-    private ArrayList<TabEntity> mTabEntities = new ArrayList<>();
+    private ArrayList<TabBaseEntity> mTabEntities = new ArrayList<>();
     private void initView(){
         View view = LayoutInflaterUtils.from(getContext(), R.layout.main_tab_layout);
         ButterKnife.bind(this,view);
@@ -61,7 +64,7 @@ public class MainTabView extends RelativeLayout {
                 textSelectColor,textDefaultColor);
     }
 
-    public MainTabView addTab(TabEntity tabEntity){
+    public MainTabView addTab(TabBaseEntity tabEntity){
         mTabEntities.add(tabEntity);
         return this;
     }
@@ -74,6 +77,7 @@ public class MainTabView extends RelativeLayout {
     public MainTabView setTextColor(int textSelectColor,int textDefaultColor) {
         this.textSelectColor = textSelectColor;
         this.textDefaultColor = textDefaultColor;
+        setShowLineColor();
         return this;
     }
 
@@ -83,6 +87,16 @@ public class MainTabView extends RelativeLayout {
 
     public ViewPager getViewPager(){
         return mViewPager;
+    }
+
+    private void setShowLineColor(){
+        if(textSelectColor != 0) {
+            int[] colorsTwo = {textSelectColor,Color.parseColor("#ffFFFFFF")};
+            GradientDrawable mGradientDrawable = (GradientDrawable) shadow_line.getBackground();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                mGradientDrawable.setColors(colorsTwo);
+            }
+        }
     }
 
 }

@@ -30,6 +30,6 @@ public class AppApplication extends BaseApplication {
      */
     @Override
     public boolean isUpdateApp() {
-        return true;
+        return false;
     }
 }

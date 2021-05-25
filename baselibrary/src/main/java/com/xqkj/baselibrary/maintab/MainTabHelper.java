@@ -20,24 +20,26 @@ public class MainTabHelper {
     }
 
     public void init(final ViewPager mViewPager, CommonTabLayout tablayout,
-                     ArrayList<TabEntity> mTabEntities,
+                     ArrayList<TabBaseEntity> mTabEntities,
                       int textSelectColor, int textDefaultColor) {
         List<String> mTitles = new ArrayList<>();
         ArrayList<Fragment> fragments = new ArrayList<>();
-
-        for(TabEntity tabEntity : mTabEntities){
-            mTitles.add(tabEntity.getTabTitle());
-            fragments.add(tabEntity.getFragment());
+        ArrayList<CustomTabEntity> entities = new ArrayList<>();
+        for(TabBaseEntity tabEntity : mTabEntities){
+            TabBaseEntity.TabEntity tabItem = tabEntity.getTabEntity();
+            mTitles.add(tabItem.getTabTitle());
+            fragments.add(tabItem.getFragment());
+            entities.add(tabItem);
         }
 
         mViewPager.setAdapter(new TabPagerAdapter(fragmentManager, DataUtils.listToArrayString(mTitles), fragments));
         ArrayList<CustomTabEntity> tabData = new ArrayList<>();
-        tabData.addAll(mTabEntities);
+        tabData.addAll(entities);
         tablayout.setTabData(tabData);
-        if (textSelectColor > 0) {
+        if (textSelectColor != 0) {
             tablayout.setTextSelectColor(textSelectColor);
         }
-        if (textDefaultColor > 0) {
+        if (textDefaultColor != 0) {
             tablayout.setTextUnselectColor(textDefaultColor);
         }
         tablayout.setOnTabSelectListener(new OnTabSelectListener() {
