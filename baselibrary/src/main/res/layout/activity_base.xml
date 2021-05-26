@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    >
+    android:background="#ffffff">
 
-    <include layout="@layout/activity_header_layout"/>
+    <include layout="@layout/activity_header_layout" />
 
     <LinearLayout
         android:id="@+id/base_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/activity_header_layout"
-        android:orientation="vertical"
-        />
+        android:orientation="vertical" />
+
 </RelativeLayout>

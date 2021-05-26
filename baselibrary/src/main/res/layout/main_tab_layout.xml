@@ -9,12 +9,12 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/tablayout" />
+        android:layout_above="@+id/shadow_line" />
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:background="#ffffff"
         tl:tl_iconHeight="24dp"
@@ -27,10 +27,9 @@
     <View
         android:id="@+id/shadow_line"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@drawable/shadow_line_bottom"
+        android:layout_height="1dp"
+        android:background="#21d81e06"
         android:layout_above="@+id/tablayout"
         />
-
 
 </RelativeLayout>

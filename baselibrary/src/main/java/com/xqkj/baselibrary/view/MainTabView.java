@@ -77,7 +77,6 @@ public class MainTabView extends RelativeLayout {
     public MainTabView setTextColor(int textSelectColor,int textDefaultColor) {
         this.textSelectColor = textSelectColor;
         this.textDefaultColor = textDefaultColor;
-        setShowLineColor();
         return this;
     }
 

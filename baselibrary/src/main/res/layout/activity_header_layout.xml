@@ -48,8 +48,9 @@
     <View
         android:id="@+id/view_line"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="1dp"
+        android:background="#21d81e06"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/shadow_line"
         android:visibility="gone" />
+
 </RelativeLayout>
