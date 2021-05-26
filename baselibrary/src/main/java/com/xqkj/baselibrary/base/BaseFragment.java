@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 
-import com.xqkj.baselibrary.R;
 import com.xqkj.baselibrary.utils.EventBusUtil;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -48,7 +47,6 @@ public abstract class BaseFragment extends Fragment {
         if (parent != null) {
             parent.removeView(view);
         }
-
         return view;
     }
 

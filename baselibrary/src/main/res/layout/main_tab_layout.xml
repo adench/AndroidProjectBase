@@ -2,39 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <com.xqkj.baselibrary.weight.NoScrollViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/rl_bottom" />
+        android:layout_above="@+id/tablayout" />
 
-    <RelativeLayout
-        android:id="@+id/rl_bottom"
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        tl:tl_iconHeight="24dp"
+        tl:tl_iconWidth="24dp"
+        tl:tl_indicator_height="0dp"
+        tl:tl_textSelectColor="@color/tab_select"
+        tl:tl_textUnselectColor="@color/tab_normal"
+        tl:tl_textsize="13dp" />
 
-        <com.flyco.tablayout.CommonTabLayout
-            android:id="@+id/tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#ffffff"
-            tl:tl_iconHeight="24dp"
-            tl:tl_iconWidth="24dp"
-            tl:tl_indicator_height="0dp"
-            tl:tl_textSelectColor="@color/tab_select"
-            tl:tl_textUnselectColor="@color/tab_normal"
-            tl:tl_textsize="13dp" />
-
-        <View
-            android:id="@+id/shadow_line"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@drawable/shadow_line_bottom" />
-    </RelativeLayout>
-
+    <View
+        android:id="@+id/shadow_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/shadow_line_bottom"
+        android:layout_above="@+id/tablayout"
+        />
 
 
 </RelativeLayout>

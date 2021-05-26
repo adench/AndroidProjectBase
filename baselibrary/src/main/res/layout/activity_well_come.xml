@@ -5,13 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_advert"
+    <com.xqkj.baselibrary.view.BannerView
+        android:id="@+id/banner_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/advert"
-        android:adjustViewBounds="true"
         />
 
     <View

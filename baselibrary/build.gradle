@@ -49,6 +49,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
+
     //view注解
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
@@ -59,7 +62,6 @@ dependencies {
     //沉浸式状态栏
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta05'
-
 
     //json
     implementation 'com.alibaba:fastjson:1.2.73'
@@ -100,6 +102,9 @@ dependencies {
 
     //tab
     implementation'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    //banner
+    implementation 'io.github.youth5201314:banner:2.2.1'
 
     //极光分享
 //    implementation 'cn.jiguang.sdk:jshare:1.6.0'

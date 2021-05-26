@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity {
                 .addTab(new TabBaseEntity("消息", R.mipmap.icon_message_t, R.mipmap.icon_message_f, new HomeFragment()))
                 .addTab(new TabBaseEntity("我的", R.mipmap.icon_mine_t, R.mipmap.icon_mine_f, new HomeFragment()))
                 .setFragmentManager(getSupportFragmentManager())
+                .setTextColor(0,0)
                 .build();
     }
 

@@ -24,6 +24,7 @@ import com.xqkj.baselibrary.R2;
 import com.xqkj.baselibrary.utils.ActivityManager;
 import com.xqkj.baselibrary.utils.EventBusUtil;
 import com.xqkj.baselibrary.utils.StatusBarUtil;
+import com.xqkj.baselibrary.utils.ToastUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -68,7 +69,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         initView();
         initData();
-
     }
 
     @Override
@@ -289,5 +289,24 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private TextView tvTime;
+
+    //是否退出app
+    protected boolean isExitApp(){
+        return false;
+    }
+    private long current_time = 0;
+    @Override
+    public void onBackPressed() {
+        if(isExitApp()) {
+            if (current_time > 0 && (System.currentTimeMillis() - current_time) <= 3000) {
+                super.onBackPressed();
+            } else {
+                ToastUtil.showToast("再按一次退出");
+                current_time = System.currentTimeMillis();
+            }
+        }else{
+            super.onBackPressed();
+        }
+    }
 
 }

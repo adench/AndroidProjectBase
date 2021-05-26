@@ -91,7 +91,7 @@ public class MainTabView extends RelativeLayout {
 
     private void setShowLineColor(){
         if(textSelectColor != 0) {
-            int[] colorsTwo = {textSelectColor,Color.parseColor("#ffFFFFFF")};
+            int[] colorsTwo = {textSelectColor,Color.parseColor("#00FFFFFF")};
             GradientDrawable mGradientDrawable = (GradientDrawable) shadow_line.getBackground();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 mGradientDrawable.setColors(colorsTwo);

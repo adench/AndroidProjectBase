@@ -8,36 +8,37 @@ import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xqkj.baselibrary.R;
 import com.xqkj.baselibrary.R2;
+import com.xqkj.baselibrary.banner.BannerData;
+import com.xqkj.baselibrary.banner.BannerListener;
 import com.xqkj.baselibrary.base.BaseActivity;
 import com.xqkj.baselibrary.config.EventCode;
 import com.xqkj.baselibrary.utils.EventBusUtil;
-import com.xqkj.baselibrary.utils.GlideUtils;
-import com.xqkj.baselibrary.utils.ToastUtil;
-import com.xqkj.baselibrary.web.WebHelper;
+import com.xqkj.baselibrary.view.BannerView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static com.xqkj.baselibrary.splashscreen.SplashScreenHelper.BANNER_CLICK;
 import static com.xqkj.baselibrary.splashscreen.SplashScreenHelper.INIT_DATA;
 import static com.xqkj.baselibrary.splashscreen.SplashScreenHelper.INIT_VIEW;
 
 public class WellComeActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R2.id.tv_count)
     TextView tv_count;
-    @BindView(R2.id.iv_advert)
-    ImageView iv_advert;
     @BindView(R2.id.ll_skip)
     LinearLayout ll_skip;
+    @BindView(R2.id.banner_view)
+    BannerView banner_view;
 
     private int interval = 1000;
     private int countTime = 5 * interval;
-    protected String advertTitle, advertUrl;
     private Messenger messenger;
     private CountDownTimer countDownTimer;
 
@@ -58,7 +59,15 @@ public class WellComeActivity extends BaseActivity implements View.OnClickListen
             messenger = bundle.getParcelable("messenger");
             countTime = bundle.getInt("count_time") * interval;
         }
-
+        banner_view.setLifecycleObserver(this)
+                .setOnBannerListener(new BannerListener() {
+                    @Override
+                    public void onBannerClick(BannerData data, int position) {
+                        sendMessage(BANNER_CLICK, new MessageClickBean(data,position));
+                        skipAfter();
+                    }
+                })
+                .create();
         sendMessage(INIT_VIEW, null);
         tv_count.setText(countTime / interval + "");
     }
@@ -76,16 +85,11 @@ public class WellComeActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
-    @OnClick({R2.id.ll_skip,R2.id.iv_advert})
+    @OnClick({R2.id.ll_skip})
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.ll_skip) {//跳过
             skipAfter();
-        } else if (id == R.id.iv_advert) {//广告
-            if(!TextUtils.isEmpty(advertUrl)) {
-                WebHelper.show(this, advertTitle, advertUrl);
-                skipAfter();
-            }
         }
     }
 
@@ -100,20 +104,12 @@ public class WellComeActivity extends BaseActivity implements View.OnClickListen
     }
 
     /**
-     * 显示图片 资源图片
+     * 显示图片
      */
-    public void showAdertImage(int imgRes) {
-        if (imgRes > 0) {
-            iv_advert.setImageResource(imgRes);
+    public void showAdert(List<BannerData> data) {
+        if (data != null && data.size() > 0) {
+            banner_view.setDatas(data);
         }
-    }
-
-    /**
-     * 显示图片 网络图片
-     */
-    public void showAdertImage(String imgUrl) {
-        if (TextUtils.isEmpty(imgUrl)) return;
-        GlideUtils.showImg(iv_advert, imgUrl);
     }
 
     //倒计时
@@ -149,16 +145,8 @@ public class WellComeActivity extends BaseActivity implements View.OnClickListen
         super.receiveEvent(event);
         switch (event.getCode()) {
             case EventCode.SPLASH_IMG:
-                SplashImgeBean bean = (SplashImgeBean) event.getData();
-                if (bean != null) {
-                    advertUrl = bean.getWebUrl();
-                    advertTitle = bean.getWebTitle();
-                    if (bean.isNet()) {
-                        showAdertImage(bean.getUrl());
-                    } else {
-                        showAdertImage(bean.getRes());
-                    }
-                }
+                List<BannerData> bannerList = (List<BannerData>) event.getData();
+                showAdert(bannerList);
                 break;
         }
     }
