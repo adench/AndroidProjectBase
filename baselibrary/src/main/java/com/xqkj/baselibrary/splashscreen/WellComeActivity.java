@@ -60,6 +60,7 @@ public class WellComeActivity extends BaseActivity implements View.OnClickListen
             countTime = bundle.getInt("count_time") * interval;
         }
         banner_view.setLifecycleObserver(this)
+                .setLoopTime(5000)
                 .setOnBannerListener(new BannerListener() {
                     @Override
                     public void onBannerClick(BannerData data, int position) {

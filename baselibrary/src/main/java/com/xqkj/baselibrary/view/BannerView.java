@@ -1,6 +1,7 @@
 package com.xqkj.baselibrary.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,7 +15,10 @@ import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
 import com.youth.banner.holder.BannerImageHolder;
 import com.youth.banner.indicator.CircleIndicator;
+import com.youth.banner.indicator.RectangleIndicator;
+import com.youth.banner.indicator.RoundLinesIndicator;
 import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.util.BannerUtils;
 
 import java.util.List;
 
@@ -27,6 +31,10 @@ public class BannerView extends RelativeLayout {
     private LifecycleOwner lifecycleOwner;
     private boolean isSingleImg = true;//是否纯图
     private BannerListener onBannerListener;
+
+    public static int INDICATOR_STYLE_CIRCLE = 1;
+    public static int INDICATOR_STYLE_RECTANGLE = 2;
+    public static int INDICATOR_STYLE_ROUNDLINES = 3;
 
     public BannerView(Context context) {
         super(context);
@@ -45,7 +53,29 @@ public class BannerView extends RelativeLayout {
 
     private void initView() {
         banner = new Banner(getContext());
+        banner.setIndicator(new CircleIndicator(getContext()));
         this.addView(banner, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+    }
+
+    public BannerView initRectangleIndicator(){
+        //indicator 默认设置
+        banner.setIndicatorNormalColor(Color.parseColor("#33000000"));
+        banner.setIndicatorSelectedColor(Color.parseColor("#ffffff"));
+        banner.setIndicatorSpace((int) BannerUtils.dp2px(6));
+        banner.setIndicatorRadius(15);
+        banner.setIndicatorHeight(BannerUtils.dp2px(5));
+        banner.setIndicatorNormalWidth(BannerUtils.dp2px(10));
+        banner.setIndicatorSelectedWidth(BannerUtils.dp2px(12));
+        return this;
+    }
+
+    private BannerView initCircleIndicator(){
+        banner.setIndicatorNormalColor(Color.parseColor("#33000000"));
+        banner.setIndicatorSelectedColor(Color.parseColor("#ffffff"));
+        banner.setIndicatorSpace((int) BannerUtils.dp2px(6));
+        banner.setIndicatorNormalWidth(BannerUtils.dp2px(6));
+        banner.setIndicatorSelectedWidth(BannerUtils.dp2px(8));
+        return this;
     }
 
     public BannerView setLifecycleObserver(LifecycleOwner lifecycleOwner) {
@@ -58,12 +88,10 @@ public class BannerView extends RelativeLayout {
         return this;
     }
 
-    public BannerView setOnBannerListener(BannerListener onBannerListener){
+    public BannerView setOnBannerListener(BannerListener onBannerListener) {
         this.onBannerListener = onBannerListener;
         return this;
     }
-
-
 
     public void create() {
         if (isSingleImg)
@@ -83,14 +111,15 @@ public class BannerView extends RelativeLayout {
             }
         })
                 .addBannerLifecycleObserver(lifecycleOwner)//添加生命周期观察者
-                .setIndicator(new CircleIndicator(getContext()))
                 .setOnBannerListener(new OnBannerListener() {
                     @Override
                     public void OnBannerClick(Object data, int position) {
-                        if(onBannerListener != null)
-                            onBannerListener.onBannerClick((BannerData) data,position);
+                        if (onBannerListener != null)
+                            onBannerListener.onBannerClick((BannerData) data, position);
                     }
                 });
+        //需放到adapter后
+        initCircleIndicator();
     }
 
     public void setDatas(List<BannerData> data) {
@@ -118,9 +147,83 @@ public class BannerView extends RelativeLayout {
     }
 
 
-    public void setTime(){
-//        banner.setScrollTime()
+    /**
+     * 轮播间隔时间
+     *
+     * @param time 默认3000
+     * @return
+     */
+    public BannerView setLoopTime(int time) {
+        banner.setLoopTime(time);
+        return this;
     }
+
+    /**
+     * banner圆角半径
+     *
+     * @param radius 默认0
+     * @return
+     */
+    public BannerView setRadius(float radius) {
+        banner.setBannerRound(radius);
+        return this;
+    }
+
+    /**
+     * 设置指示器样式
+     *
+     * @param type 1.圆形 2.圆角长形 3.线形
+     * @return
+     */
+    public BannerView setIndicatorStyle(int type) {
+        if (type == INDICATOR_STYLE_CIRCLE) {
+            banner.setIndicator(new CircleIndicator(getContext()));
+        } else if (type == INDICATOR_STYLE_RECTANGLE) {
+            banner.setIndicator(new RectangleIndicator(getContext()));
+        } else if (type == INDICATOR_STYLE_ROUNDLINES) {
+            banner.setIndicator(new RoundLinesIndicator(getContext()));
+        }
+        return this;
+    }
+
+    /**
+     * 设置指示器颜色
+     *
+     * @param selectColor 选择时颜色
+     * @param normalColor 默认颜色
+     * @return
+     */
+    public BannerView setIndicatorColor(int selectColor, int normalColor) {
+        banner.setIndicatorNormalColor(normalColor)
+                .setIndicatorSelectedColor(selectColor);
+        return this;
+    }
+
+    /**
+     * 设置指示器宽度
+     * @param selectWidth 选中宽
+     * @param normalWidth 默认宽
+     * @return
+     */
+    public BannerView setIndicatorWidth(int selectWidth, int normalWidth) {
+        banner.setIndicatorNormalWidth(BannerUtils.dp2px(normalWidth))
+                .setIndicatorSelectedWidth(BannerUtils.dp2px(selectWidth));
+        return this;
+    }
+
+    /**
+     * 长形指示器 设置弧度 高度
+     * @param radius 弧度
+     * @param height 高度
+     * @return
+     */
+    public BannerView setIndicatorRectangle(int radius, int height) {
+        banner.setIndicatorRadius(radius)
+                .setIndicatorHeight(BannerUtils.dp2px(height));
+        return this;
+    }
+
+
 
     /**
      * banner_loop_time	integer	轮播间隔时间，默认3000

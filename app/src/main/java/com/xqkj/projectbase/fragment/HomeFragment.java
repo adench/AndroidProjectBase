@@ -26,10 +26,17 @@ public class HomeFragment extends BaseFragment implements BannerListener {
     @Override
     protected void initView(View view) {
         banner.setLifecycleObserver(this)//banner生命周期管理
+                .setLoopTime(5000)
                 .setOnBannerListener(this)//点击
                 .setIsSingleImg(true)//纯图
                 .create();
+        banner.setIndicatorStyle(BannerView.INDICATOR_STYLE_RECTANGLE)
+                .initRectangleIndicator();
         List<BannerData> bannerList = new ArrayList<>();
+        bannerList.add(new BannerData("http://pic346.nipic.com/file/20201126/32357757_184530234082_2.jpg","百度","https://www.baidu.com/"));
+        bannerList.add(new BannerData("https://picnew15.photophoto.cn/20201203/zhongguofengniunianqidongyeh5shejitupian-39968250_1.jpg"));
+        bannerList.add(new BannerData("http://pic346.nipic.com/file/20201126/32357757_184530234082_2.jpg","百度","https://www.baidu.com/"));
+        bannerList.add(new BannerData("https://picnew15.photophoto.cn/20201203/zhongguofengniunianqidongyeh5shejitupian-39968250_1.jpg"));
         bannerList.add(new BannerData("http://pic346.nipic.com/file/20201126/32357757_184530234082_2.jpg","百度","https://www.baidu.com/"));
         bannerList.add(new BannerData("https://picnew15.photophoto.cn/20201203/zhongguofengniunianqidongyeh5shejitupian-39968250_1.jpg"));
         banner.setDatas(bannerList);
