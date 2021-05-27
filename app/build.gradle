@@ -20,6 +20,7 @@ android {
                 JPUSH_APPKEY : "appkey", //极光控制台创建应用得到的AppKey.
                 JPUSH_CHANNEL : "baselibrary", //暂时填写默认值即可.
         ]
+        multiDexEnabled true
     }
 
     /** 配置签名文件 **/

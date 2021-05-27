@@ -15,8 +15,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.xqkj.baselibrary.net.HttpSetting.SUCCESS_CODE;
-
 public class HttpRequest {
     public final static String POST = "post";
     public final static String GET = "get";
@@ -55,7 +53,7 @@ public class HttpRequest {
         return request;
     }
 
-    public HttpRequest postJson(String apiurl, Map<String, Object> map) {
+    public HttpRequest postJson(String apiurl, Map<String, String> map) {
         MODEl = POST_JSON;
         this.apiurl = apiurl;
         this.jsonStr = JsonUtils.mapToJson(map);
@@ -133,12 +131,16 @@ public class HttpRequest {
     //请求后处理
     public void requestDealWith(String s, Class<?> clazz, HttpCallBack callback) {
         if (TextUtils.isEmpty(s)) {
-            Log.d("json", "没有json返回,请检查请求方式");
+            Log.d("http_request", "没有json返回,请检查请求方式");
             return;
         }
-
-        BaseBean resultBean = (BaseBean) JsonUtils.jsonParser(s, BaseBean.class);
-        if (resultBean.getCode().equals(SUCCESS_CODE)) {
+        if (HttpSetting.BASE_BEAN == null) {
+            Log.d("http_request", "请在application中设置基础类");
+            return;
+        }
+        BaseBean resultBean = (BaseBean) JsonUtils.jsonParser(s, HttpSetting.BASE_BEAN);
+        Log.e("===","code:"+resultBean.getCode()+"-msg:"+resultBean.getMessage()+"-data:"+resultBean.getData());
+        if (resultBean.getCode().equals(HttpSetting.SUCCESS_CODE)) {
             if (clazz != null && clazz != BaseBean.class) {
                 if(resultBean.getData() != null) {
                     Object object = JsonUtils.jsonParser(resultBean.getData().toString(), clazz);

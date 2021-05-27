@@ -10,6 +10,8 @@ public class AppApplication extends BaseApplication {
 
         //配置请求成功状态码
         HttpSetting.SUCCESS_CODE = "200";
+        //基础类
+        HttpSetting.BASE_BEAN = HttpBaseBean.class;
 
     }
 

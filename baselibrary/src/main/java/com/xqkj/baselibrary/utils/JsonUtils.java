@@ -77,7 +77,7 @@ public class JsonUtils {
      * @param map
      * @return
      */
-    public static String mapToJson(Map<String, Object> map){
+    public static String mapToJson(Map<String, String> map){
         com.alibaba.fastjson.JSONObject jsonStr = com.alibaba.fastjson.JSONObject.parseObject(JSON.toJSONString(map));
         return jsonStr.toJSONString();
     }

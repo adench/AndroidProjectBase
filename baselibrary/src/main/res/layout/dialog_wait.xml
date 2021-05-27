@@ -34,7 +34,7 @@
                 android:layout_marginTop="13dp"
                 android:layout_marginRight="15dp">
 
-                <com.zhongchi.jxgj.weight.waitdialog.ProgressView
+                <com.xqkj.baselibrary.waitdialog.ProgressView
                     android:id="@+id/progress"
                     android:layout_width="65dp"
                     android:layout_height="65dp" />
