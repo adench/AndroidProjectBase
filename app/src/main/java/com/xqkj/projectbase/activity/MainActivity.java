@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 
 import com.xqkj.baselibrary.maintab.TabBaseEntity;
+import com.xqkj.baselibrary.net.HttpRequest;
 import com.xqkj.baselibrary.utils.UIHelper;
 import com.xqkj.baselibrary.view.MainTabView;
 import com.xqkj.projectbase.R;
@@ -66,7 +67,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
     }
 
 }

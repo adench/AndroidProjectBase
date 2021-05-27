@@ -11,6 +11,7 @@ import com.lzy.okgo.request.base.Request;
 import com.xqkj.baselibrary.utils.JsonUtils;
 import com.xqkj.baselibrary.waitdialog.WaitDialog;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,8 @@ import static com.xqkj.baselibrary.net.HttpSetting.SUCCESS_CODE;
 public class HttpRequest {
     public final static String POST = "post";
     public final static String GET = "get";
+    public final static String PUT = "put";
+    public final static String DELETE = "delete";
     public final static String POST_JSON = "post_json";
 
     private Class<?> clazz = BaseBean.class;
@@ -147,6 +150,10 @@ public class HttpRequest {
                 callback.success(null);
             }
         } else {
+            if(Arrays.binarySearch(HttpSetting.LOGIN_FAILD_CODE,resultBean.getCode()) > 0){
+                //登录过期
+
+            }
             callback.failed(resultBean.getCode(), resultBean.getMessage());
         }
     }

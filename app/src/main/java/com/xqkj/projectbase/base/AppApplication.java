@@ -9,7 +9,7 @@ public class AppApplication extends BaseApplication {
         super.onCreate();
 
         //配置请求成功状态码
-        HttpSetting.SUCCESS_CODE = "";
+        HttpSetting.SUCCESS_CODE = "200";
 
     }
 

@@ -29,9 +29,10 @@ public class HomeFragment extends BaseFragment implements BannerListener {
                 .setLoopTime(5000)
                 .setOnBannerListener(this)//点击
                 .setIsSingleImg(true)//纯图
+                .setRadius(5)//圆角
                 .create();
-        banner.setIndicatorStyle(BannerView.INDICATOR_STYLE_RECTANGLE)
-                .initRectangleIndicator();
+//        banner.setIndicatorStyle(BannerView.INDICATOR_STYLE_RECTANGLE)
+//                .initRectangleIndicator();
         List<BannerData> bannerList = new ArrayList<>();
         bannerList.add(new BannerData("http://pic346.nipic.com/file/20201126/32357757_184530234082_2.jpg","百度","https://www.baidu.com/"));
         bannerList.add(new BannerData("https://picnew15.photophoto.cn/20201203/zhongguofengniunianqidongyeh5shejitupian-39968250_1.jpg"));

@@ -9,4 +9,7 @@ public class HttpSetting {
     //请求头
     public static HttpHeaders headers = new HttpHeaders();
 
+    //登录失败状态码
+    public static String[] LOGIN_FAILD_CODE = {};
+
 }

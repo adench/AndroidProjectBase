@@ -3,6 +3,7 @@ package com.xqkj.baselibrary.base;
 import android.app.Application;
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import androidx.multidex.MultiDex;
 
@@ -34,7 +35,7 @@ public class BaseApplication extends Application {
             ApplicationInitUtils.bugly(mContext, appid, userId);
 
         }
-
+        Log.e("===isUpdateApp",isUpdateApp()+"");
         Beta.autoCheckUpgrade = isUpdateApp();
     }
 

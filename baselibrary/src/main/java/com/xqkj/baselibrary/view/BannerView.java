@@ -2,6 +2,7 @@ package com.xqkj.baselibrary.view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,6 +32,7 @@ public class BannerView extends RelativeLayout {
     private LifecycleOwner lifecycleOwner;
     private boolean isSingleImg = true;//是否纯图
     private BannerListener onBannerListener;
+    private float radius = 0f;
 
     public static int INDICATOR_STYLE_CIRCLE = 1;
     public static int INDICATOR_STYLE_RECTANGLE = 2;
@@ -57,23 +59,23 @@ public class BannerView extends RelativeLayout {
         this.addView(banner, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
     }
 
-    public BannerView initRectangleIndicator(){
+    public BannerView initRectangleIndicator() {
         //indicator 默认设置
         banner.setIndicatorNormalColor(Color.parseColor("#33000000"));
         banner.setIndicatorSelectedColor(Color.parseColor("#ffffff"));
-        banner.setIndicatorSpace((int) BannerUtils.dp2px(6));
+        banner.setIndicatorSpace((int) BannerUtils.dp2px(5));
         banner.setIndicatorRadius(15);
-        banner.setIndicatorHeight(BannerUtils.dp2px(5));
+        banner.setIndicatorHeight(BannerUtils.dp2px(4));
         banner.setIndicatorNormalWidth(BannerUtils.dp2px(10));
         banner.setIndicatorSelectedWidth(BannerUtils.dp2px(12));
         return this;
     }
 
-    private BannerView initCircleIndicator(){
+    private BannerView initCircleIndicator() {
         banner.setIndicatorNormalColor(Color.parseColor("#33000000"));
         banner.setIndicatorSelectedColor(Color.parseColor("#ffffff"));
-        banner.setIndicatorSpace((int) BannerUtils.dp2px(6));
-        banner.setIndicatorNormalWidth(BannerUtils.dp2px(6));
+        banner.setIndicatorSpace((int) BannerUtils.dp2px(5));
+        banner.setIndicatorNormalWidth(BannerUtils.dp2px(7));
         banner.setIndicatorSelectedWidth(BannerUtils.dp2px(8));
         return this;
     }
@@ -104,9 +106,9 @@ public class BannerView extends RelativeLayout {
             @Override
             public void onBindView(BannerImageHolder holder, BannerData data, int position, int size) {
                 if (data.isNetData()) {
-                    GlideUtils.showCircleConnerImg(holder.imageView, data.getUrl(), 0);
+                    GlideUtils.showCircleConnerImg(holder.imageView, data.getUrl(), (int) radius);
                 } else {
-                    GlideUtils.showCircleConnerImg(holder.imageView, data.getDrawableRes(), 0);
+                    GlideUtils.showCircleConnerImg(holder.imageView, data.getDrawableRes(), (int) radius);
                 }
             }
         })
@@ -165,7 +167,12 @@ public class BannerView extends RelativeLayout {
      * @return
      */
     public BannerView setRadius(float radius) {
-        banner.setBannerRound(radius);
+        this.radius = BannerUtils.dp2px(radius);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            banner.setBannerRound2(BannerUtils.dp2px(radius));
+        }else{
+            banner.setBannerRound(BannerUtils.dp2px(radius));
+        }
         return this;
     }
 
@@ -201,6 +208,7 @@ public class BannerView extends RelativeLayout {
 
     /**
      * 设置指示器宽度
+     *
      * @param selectWidth 选中宽
      * @param normalWidth 默认宽
      * @return
@@ -213,6 +221,7 @@ public class BannerView extends RelativeLayout {
 
     /**
      * 长形指示器 设置弧度 高度
+     *
      * @param radius 弧度
      * @param height 高度
      * @return
@@ -222,7 +231,6 @@ public class BannerView extends RelativeLayout {
                 .setIndicatorHeight(BannerUtils.dp2px(height));
         return this;
     }
-
 
 
     /**
