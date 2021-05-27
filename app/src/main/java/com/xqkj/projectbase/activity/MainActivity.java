@@ -62,12 +62,6 @@ public class MainActivity extends BaseActivity {
                 .setFragmentManager(getSupportFragmentManager())
                 .setTextColor(0,0)
                 .build();
-
-        HttpBaseBean bean = new HttpBaseBean();
-        bean.setCode("200");
-        bean.setMsg("haha");
-        BaseBean baseBean = bean;
-        Log.e("===***","code:"+baseBean.getCode());
     }
 
     @OnClick({R.id.iv_add})

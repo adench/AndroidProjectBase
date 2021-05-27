@@ -139,7 +139,6 @@ public class HttpRequest {
             return;
         }
         BaseBean resultBean = (BaseBean) JsonUtils.jsonParser(s, HttpSetting.BASE_BEAN);
-        Log.e("===","code:"+resultBean.getCode()+"-msg:"+resultBean.getMessage()+"-data:"+resultBean.getData());
         if (resultBean.getCode().equals(HttpSetting.SUCCESS_CODE)) {
             if (clazz != null && clazz != BaseBean.class) {
                 if(resultBean.getData() != null) {
