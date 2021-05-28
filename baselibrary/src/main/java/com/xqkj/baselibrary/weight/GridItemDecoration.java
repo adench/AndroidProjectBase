@@ -4,6 +4,8 @@ import android.graphics.Rect;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.xqkj.baselibrary.utils.DensityUtils;
+
 public class GridItemDecoration extends RecyclerView.ItemDecoration {
 
     private int spanCount;
@@ -11,10 +13,22 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
     private int horizontalSpace;
     private boolean includeEdge = false;
 
+    public GridItemDecoration(int spanCount, int space) {
+        this(spanCount,space,space,false);
+    }
+
+    public GridItemDecoration(int spanCount, int verticalSpace, int horizontalSpace) {
+        this(spanCount,verticalSpace,horizontalSpace,false);
+    }
+
+    public GridItemDecoration(int spanCount, int space,boolean includeEdge) {
+        this(spanCount,space,space,includeEdge);
+    }
+
     public GridItemDecoration(int spanCount, int verticalSpace, int horizontalSpace, boolean includeEdge) {
         this.spanCount = spanCount;
-        this.verticalSpace = verticalSpace;
-        this.horizontalSpace = horizontalSpace;
+        this.verticalSpace = DensityUtils.dp2px(verticalSpace);
+        this.horizontalSpace = DensityUtils.dp2px(horizontalSpace);
         this.includeEdge = includeEdge;
     }
 
