@@ -43,6 +43,11 @@ public class StatusBarUtil {
         view.setLayoutParams(layoutParams);
     }
 
+    //获取状态栏高度
+    public static int getStatusBarHeight(Context context){
+        return ImmersionBar.getStatusBarHeight((Activity) context);
+    }
+
     // 隐藏状态栏
     public static void hideStatusBar(Activity activity) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
