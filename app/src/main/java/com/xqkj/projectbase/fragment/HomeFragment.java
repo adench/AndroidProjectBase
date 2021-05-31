@@ -30,6 +30,8 @@ public class HomeFragment extends BaseFragment implements BannerListener {
                 .setIsSingleImg(true)//纯图
                 .setRadius(5)//圆角
                 .create();
+        banner.setIndicatorStyle(BannerView.INDICATOR_STYLE_NUM)
+                .setIndicatorGravity(BannerView.INDICATOR_GRAVITY_RIGHT);
 //        banner.setIndicatorStyle(BannerView.INDICATOR_STYLE_RECTANGLE)
 //                .initRectangleIndicator();
         List<BannerData> bannerList = new ArrayList<>();

@@ -11,9 +11,11 @@ import androidx.lifecycle.LifecycleOwner;
 
 import com.xqkj.baselibrary.banner.BannerData;
 import com.xqkj.baselibrary.banner.BannerListener;
+import com.xqkj.baselibrary.banner.indicator.NumIndicator;
 import com.xqkj.baselibrary.utils.GlideUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.config.IndicatorConfig;
 import com.youth.banner.holder.BannerImageHolder;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.indicator.RectangleIndicator;
@@ -37,6 +39,11 @@ public class BannerView extends RelativeLayout {
     public static int INDICATOR_STYLE_CIRCLE = 1;
     public static int INDICATOR_STYLE_RECTANGLE = 2;
     public static int INDICATOR_STYLE_ROUNDLINES = 3;
+    public static int INDICATOR_STYLE_NUM = 4;
+
+    public static int INDICATOR_GRAVITY_LEFT = 0;
+    public static int INDICATOR_GRAVITY_CENTER = 1;
+    public static int INDICATOR_GRAVITY_RIGHT = 2;
 
     public BannerView(Context context) {
         super(context);
@@ -189,6 +196,8 @@ public class BannerView extends RelativeLayout {
             banner.setIndicator(new RectangleIndicator(getContext()));
         } else if (type == INDICATOR_STYLE_ROUNDLINES) {
             banner.setIndicator(new RoundLinesIndicator(getContext()));
+        } else if(type == INDICATOR_STYLE_NUM){
+            banner.setIndicator(new NumIndicator(getContext()));
         }
         return this;
     }
@@ -229,6 +238,16 @@ public class BannerView extends RelativeLayout {
     public BannerView setIndicatorRectangle(int radius, int height) {
         banner.setIndicatorRadius(radius)
                 .setIndicatorHeight(BannerUtils.dp2px(height));
+        return this;
+    }
+
+    /**
+     * 设置指示器位置
+     * @param gravity
+     * @return
+     */
+    public BannerView setIndicatorGravity(int gravity){
+        banner.setIndicatorGravity(gravity);
         return this;
     }
 
