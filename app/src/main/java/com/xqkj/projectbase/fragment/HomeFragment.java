@@ -27,6 +27,7 @@ public class HomeFragment extends BaseFragment implements BannerListener {
     protected void initView(View view) {
         banner.setLifecycleObserver(this)//banner生命周期管理
                 .setLoopTime(5000)
+                .setAutoLoop(true)
                 .setIsSingleImg(true)//纯图
                 .setRadius(5)//圆角
                 .create();

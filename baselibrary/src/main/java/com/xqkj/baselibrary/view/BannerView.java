@@ -251,6 +251,16 @@ public class BannerView extends RelativeLayout {
         return this;
     }
 
+    /**
+     * 是否自动轮播
+     * @param isAutoLoop 默认是
+     * @return
+     */
+    public BannerView setAutoLoop(boolean isAutoLoop){
+        banner.isAutoLoop(isAutoLoop);
+        return this;
+    }
+
 
     /**
      * banner_loop_time	integer	轮播间隔时间，默认3000
