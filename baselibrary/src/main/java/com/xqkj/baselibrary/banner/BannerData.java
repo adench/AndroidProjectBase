@@ -10,6 +10,10 @@ public class BannerData{
     private String webUrl;//跳转url
     private String webTitle;//web标题
 
+    private String advertId;//广告id
+    private String condition;//跳转条件
+    private String[] conditionContent;//条件内容
+
     public BannerData(){
     }
 
@@ -44,6 +48,22 @@ public class BannerData{
         this.webUrl = webUrl;
         this.webTitle = webTitle;
         this.isNetdata = false;
+    }
+
+    public BannerData(String url, int viewType, String webTitle, String webUrl,String advertId,
+                      String condition,String... conditionContent) {
+        this(webUrl,viewType,webTitle,webUrl);
+        this.advertId = advertId;
+        this.condition = condition;
+        this.conditionContent = conditionContent;
+    }
+
+    public BannerData(int drawableRes, int viewType, String webTitle, String webUrl,String advertId,
+                      String condition,String... conditionContent) {
+        this(webUrl,viewType,webTitle,webUrl);
+        this.advertId = advertId;
+        this.condition = condition;
+        this.conditionContent = conditionContent;
     }
 
     public String getUrl() {
