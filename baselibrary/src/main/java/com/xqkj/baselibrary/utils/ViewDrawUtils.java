@@ -66,7 +66,7 @@ public class ViewDrawUtils {
             public boolean onPreDraw() {
                 view.getViewTreeObserver().removeOnPreDrawListener(this);
                 int height = view.getHeight();
-                onViewTreeObserver.OnHeight(height);
+                onViewTreeObserver.onHeight(height);
                 return false;
             }
         });
@@ -79,7 +79,33 @@ public class ViewDrawUtils {
             public boolean onPreDraw() {
                 view.getViewTreeObserver().removeOnPreDrawListener(this);
                 int width = view.getWidth();
-                onViewTreeObserver.OnHeight(width);
+                onViewTreeObserver.onWidth(width);
+                return false;
+            }
+        });
+    }
+
+    //获取控件top
+    public static void getViewTop(final View view,final OnViewTreeObserver onViewTreeObserver){
+        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                view.getViewTreeObserver().removeOnPreDrawListener(this);
+                int top = view.getTop();
+                onViewTreeObserver.onTop(top);
+                return false;
+            }
+        });
+    }
+
+    //获取控件bottom
+    public static void getViewBottom(final View view,final OnViewTreeObserver onViewTreeObserver){
+        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                view.getViewTreeObserver().removeOnPreDrawListener(this);
+                int bottom = view.getBottom();
+                onViewTreeObserver.onBottom(bottom);
                 return false;
             }
         });

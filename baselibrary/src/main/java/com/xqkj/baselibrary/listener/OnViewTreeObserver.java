@@ -1,9 +1,15 @@
 package com.xqkj.baselibrary.listener;
 
 public abstract class OnViewTreeObserver {
-    public void OnHeight(int height) {
+    public void onHeight(int height) {
     }
 
-    public void OnWidth(int width) {
+    public void onWidth(int width) {
+    }
+
+    public void onTop(int top) {
+    }
+
+    public void onBottom(int bottom) {
     }
 }
