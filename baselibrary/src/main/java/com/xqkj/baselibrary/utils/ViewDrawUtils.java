@@ -4,6 +4,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
+import com.xqkj.baselibrary.listener.OnViewTreeObserver;
+
 public class ViewDrawUtils {
 
     //根据宽度设置高度
@@ -53,6 +55,32 @@ public class ViewDrawUtils {
                 viewParams.height = sjHeight;
                 view.setLayoutParams(viewParams);
                 return true;
+            }
+        });
+    }
+
+    //获取控件高度
+    public static void getViewHeight(final View view,final OnViewTreeObserver onViewTreeObserver){
+        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                view.getViewTreeObserver().removeOnPreDrawListener(this);
+                int height = view.getHeight();
+                onViewTreeObserver.OnHeight(height);
+                return false;
+            }
+        });
+    }
+
+    //获取控件宽度
+    public static void getViewWidth(final View view,final OnViewTreeObserver onViewTreeObserver){
+        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                view.getViewTreeObserver().removeOnPreDrawListener(this);
+                int width = view.getWidth();
+                onViewTreeObserver.OnHeight(width);
+                return false;
             }
         });
     }
