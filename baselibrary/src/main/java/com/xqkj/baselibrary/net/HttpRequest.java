@@ -53,7 +53,7 @@ public class HttpRequest {
         return request;
     }
 
-    public HttpRequest postJson(String apiurl, Map<String, String> map) {
+    public HttpRequest postJson(String apiurl, Map<String, Object> map) {
         MODEl = POST_JSON;
         this.apiurl = apiurl;
         this.jsonStr = JsonUtils.mapToJson(map);
