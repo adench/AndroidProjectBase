@@ -82,13 +82,13 @@ public class JsonUtils {
         return jsonStr.toJSONString();
     }
 
-    public static Map<String, Object> orderFields(Map<String, Object>... maps){
+    public static Map<String, Object> orderFields(String orderField,Map<String, Object>... maps){
         List<Map<String, Object>> list = new ArrayList<>();
         for(Map<String, Object> map : maps){
             list.add(map);
         }
         Map<String, Object> orderMap = new HashMap<>();
-        orderMap.put("orderFields",list);
+        orderMap.put(orderField,list);
         return orderMap;
     }
 }
