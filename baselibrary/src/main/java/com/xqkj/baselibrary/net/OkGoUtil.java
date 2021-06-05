@@ -17,7 +17,7 @@ public class OkGoUtil {
                 .cacheKey("cacheGetKey")
                 .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type","application/json")
-                .headers(HttpSetting.headers)
+                .headers(new HttpHeaders())
                 .params(map)
                 .execute(stringCallback);
     }

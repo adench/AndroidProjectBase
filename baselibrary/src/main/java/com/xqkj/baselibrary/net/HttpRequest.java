@@ -8,6 +8,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.xqkj.baselibrary.listener.HttpLoginInvalidLinstener;
 import com.xqkj.baselibrary.utils.JsonUtils;
 import com.xqkj.baselibrary.waitdialog.WaitDialog;
 
@@ -153,7 +154,10 @@ public class HttpRequest {
         } else {
             if(Arrays.binarySearch(HttpSetting.LOGIN_FAILD_CODE,resultBean.getCode()) > 0){
                 //登录过期
-
+                HttpLoginInvalid invalidLogin = HttpSetting.invalidLogin;
+                if(invalidLogin != null){
+                    invalidLogin.onCall();
+                }
             }
             callback.failed(resultBean.getCode(), resultBean.getMessage());
         }

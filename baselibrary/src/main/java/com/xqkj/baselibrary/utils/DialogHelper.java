@@ -52,6 +52,7 @@ public class DialogHelper {
         return dialog;
     }
 
+
     public static MaterialDialog showContentDialog(Context context, String title, String content, final DialogCommitListener listener) {
         final MaterialDialog dialog = getConnerBgDialog(context, R.layout.dialog_content_layout);
         View view = dialog.getCustomView();
