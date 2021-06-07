@@ -17,7 +17,7 @@ public class OkGoUtil {
                 .cacheKey("cacheGetKey")
                 .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type","application/json")
-                .headers(new HttpHeaders())
+                .headers(HttpSetting.headers.getHttpHeaders())
                 .params(map)
                 .execute(stringCallback);
     }
@@ -26,7 +26,7 @@ public class OkGoUtil {
                 .tag(url)
                 .cacheKey("cachePostKey")
                 .headers("Content-Type","application/json")
-                .headers(HttpSetting.headers)
+                .headers(HttpSetting.headers.getHttpHeaders())
                 .upJson(new JSONObject(map))
                 .execute(stringCallback);
     }
@@ -36,7 +36,7 @@ public class OkGoUtil {
                 .tag(url)
                 .cacheKey("cachePostKey")
                 .headers("Content-Type","application/json")
-                .headers(HttpSetting.headers)
+                .headers(HttpSetting.headers.getHttpHeaders())
                 .headers(new HttpHeaders())
                 .upJson(jsonStr)
                 .execute(stringCallback);
@@ -54,7 +54,7 @@ public class OkGoUtil {
                 .tag(url)
                 .cacheKey("cachePostKey")
                 .cacheMode(CacheMode.NO_CACHE)
-                .headers(HttpSetting.headers)
+                .headers(HttpSetting.headers.getHttpHeaders())
                 .params(params)
                 .execute(stringCallback);
     }

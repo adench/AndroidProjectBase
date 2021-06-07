@@ -13,4 +13,9 @@ public class HttpHeader {
         httpHeader.put(key, value);
         return this;
     }
+
+    public HttpHeaders getHttpHeaders(){
+        return httpHeader;
+    }
+
 }
