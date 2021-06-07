@@ -102,8 +102,9 @@ public class MainTabView extends RelativeLayout {
      * 设置tab
      * @param position
      */
-    public void setCurrentTab(int position){
+    public MainTabView setCurrentTab(int position){
         tablayout.setCurrentTab(position);
+        return this;
     }
 
 }
