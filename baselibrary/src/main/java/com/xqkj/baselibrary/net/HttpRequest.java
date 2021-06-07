@@ -153,14 +153,16 @@ public class HttpRequest {
             }
         } else {
             if(Arrays.binarySearch(HttpSetting.LOGIN_FAILD_CODE,resultBean.getCode()) > 0){
-                callback.invalidLogin();
-                //登录过期
-                HttpLoginInvalid invalidLogin = HttpSetting.invalidLogin;
-                if(invalidLogin != null){
-                    invalidLogin.onCall();
+                if(!callback.invalidLogin()) {
+                    //登录过期
+                    HttpLoginInvalid invalidLogin = HttpSetting.invalidLogin;
+                    if (invalidLogin != null) {
+                        invalidLogin.onCall();
+                    }
                 }
+            }else {
+                callback.failed(resultBean.getCode(), resultBean.getMessage());
             }
-            callback.failed(resultBean.getCode(), resultBean.getMessage());
         }
     }
 
