@@ -4,6 +4,8 @@ import com.xqkj.baselibrary.base.BaseApplication;
 import com.xqkj.baselibrary.net.HttpHeader;
 import com.xqkj.baselibrary.net.HttpSetting;
 
+import java.util.Map;
+
 public class AppApplication extends BaseApplication {
     @Override
     public void onCreate() {
@@ -14,7 +16,12 @@ public class AppApplication extends BaseApplication {
         //基础类
         HttpSetting.BASE_BEAN = HttpBaseBean.class;
         //添加请求头
-        HttpSetting.headers = new HttpHeader().addParams("","");
+        HttpSetting.headers = new HttpHeader() {
+            @Override
+            public Map<String, String> getParams() {
+                return null;
+            }
+        };
     }
 
     /**
