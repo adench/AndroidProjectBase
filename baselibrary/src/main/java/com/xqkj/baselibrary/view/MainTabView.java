@@ -104,6 +104,7 @@ public class MainTabView extends RelativeLayout {
      */
     public MainTabView setCurrentTab(int position){
         tablayout.setCurrentTab(position);
+        mViewPager.setCurrentItem(position);
         return this;
     }
 
