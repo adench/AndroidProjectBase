@@ -1,6 +1,7 @@
 package com.xqkj.projectbase.base;
 
 import com.xqkj.baselibrary.base.BaseApplication;
+import com.xqkj.baselibrary.net.HttpHeader;
 import com.xqkj.baselibrary.net.HttpSetting;
 
 public class AppApplication extends BaseApplication {
@@ -12,7 +13,8 @@ public class AppApplication extends BaseApplication {
         HttpSetting.SUCCESS_CODE = "200";
         //基础类
         HttpSetting.BASE_BEAN = HttpBaseBean.class;
-
+        //添加请求头
+        HttpSetting.headers = new HttpHeader().addParams("","");
     }
 
     /**
