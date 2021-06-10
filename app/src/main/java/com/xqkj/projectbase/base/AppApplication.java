@@ -43,4 +43,10 @@ public class AppApplication extends BaseApplication {
     public boolean isUpdateApp() {
         return false;
     }
+
+    //微信appid
+    @Override
+    protected String getWechatAppId() {
+        return "wx1d9518066a2bde92";
+    }
 }

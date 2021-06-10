@@ -107,6 +107,10 @@ dependencies {
     //banner
     implementation 'io.github.youth5201314:banner:2.2.1'
 
+    //支付宝
+    implementation (name: 'alipaysdk-15.8.03.210428205839', ext: 'aar')
+    //微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     //极光分享
 //    implementation 'cn.jiguang.sdk:jshare:1.6.0'
 //    implementation 'cn.jiguang.sdk:jcore:1.2.3'

@@ -8,11 +8,15 @@ import android.util.Log;
 import androidx.multidex.MultiDex;
 
 import com.tencent.bugly.beta.Beta;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.xqkj.baselibrary.utils.ApplicationInitUtils;
 
 public class BaseApplication extends Application {
     public static Context mContext;
     public static int widthPixels, heightPixels;
+    public static IWXAPI wxapi;
+    public static String WECHAT_APP_ID;
 
     @Override
     public void onCreate() {
@@ -35,9 +39,15 @@ public class BaseApplication extends Application {
             ApplicationInitUtils.bugly(mContext, appid, userId);
 
         }
-        Log.e("===isUpdateApp",isUpdateApp()+"");
+        Log.e("===isUpdateApp", isUpdateApp() + "");
         Beta.autoCheckUpgrade = isUpdateApp();
+
+        //微信
+        WECHAT_APP_ID = getWechatAppId();
+        wxapi = WXAPIFactory.createWXAPI(this, WECHAT_APP_ID, true);
+        wxapi.registerApp(WECHAT_APP_ID);
     }
+
 
     public String[] bugly() {
         return null;
@@ -50,5 +60,9 @@ public class BaseApplication extends Application {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
         MultiDex.install(this);
+    }
+
+    protected String getWechatAppId() {
+        return "";
     }
 }
