@@ -8,6 +8,7 @@ import android.text.TextUtils;
 
 import com.alipay.sdk.app.AuthTask;
 import com.alipay.sdk.app.PayTask;
+import com.tencent.bugly.proguard.A;
 import com.xqkj.baselibrary.config.EventCode;
 import com.xqkj.baselibrary.pay.lib.PayFactory;
 import com.xqkj.baselibrary.utils.EventBusUtil;
@@ -16,8 +17,17 @@ import com.xqkj.baselibrary.utils.ToastUtil;
 import java.util.Map;
 
 public class AliPay implements PayFactory {
+    public static AliPay instance;
+    public static AliPay getInstance() {
+        if (instance == null) {
+            instance = new AliPay();
+        }
+        return instance;
+    }
+
     private final int SDK_PAY_FLAG = 0x0011;
     private final int FLAG_ALIPAY_LOGIN = 0x0012;
+
 
     @Override
     public void toPay(final Context context, final String orderInfo) {
@@ -45,7 +55,7 @@ public class AliPay implements PayFactory {
     }
 
     @Override
-    public void auth(final Context context,final String alipay_str) {
+    public void auth(final Context context, final String alipay_str) {
         Runnable authRunnable = new Runnable() {
             @Override
             public void run() {

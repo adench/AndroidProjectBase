@@ -10,9 +10,18 @@ import com.xqkj.baselibrary.utils.JsonUtils;
 import com.xqkj.baselibrary.utils.ToastUtil;
 
 public class WechatPay implements PayFactory {
+    public static WechatPay instance;
+
+    public static WechatPay getInstance() {
+        if (instance == null) {
+            instance = new WechatPay();
+        }
+        return instance;
+    }
+
     @Override
     public void toPay(Context context, String orderInfo) {
-        WechatPayParams params = (WechatPayParams) JsonUtils.jsonParser(orderInfo,WechatPayParams.class);
+        WechatPayParams params = (WechatPayParams) JsonUtils.jsonParser(orderInfo, WechatPayParams.class);
         PayReq request = new PayReq();
         request.appId = BaseApplication.WECHAT_APP_ID;///你的微信appid
         request.partnerId = params.getPartnerid();//商户号
@@ -25,7 +34,7 @@ public class WechatPay implements PayFactory {
     }
 
     @Override
-    public void auth(Context context,String authInfo) {
+    public void auth(Context context, String authInfo) {
         if (!BaseApplication.wxapi.isWXAppInstalled()) {
             ToastUtil.showToast("您还未安装微信客户端");
             return;

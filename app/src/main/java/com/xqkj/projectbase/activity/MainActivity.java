@@ -10,6 +10,7 @@ import com.xqkj.baselibrary.maintab.TabBaseEntity;
 import com.xqkj.baselibrary.net.BaseBean;
 import com.xqkj.baselibrary.net.HttpCallBack;
 import com.xqkj.baselibrary.net.HttpRequest;
+import com.xqkj.baselibrary.pay.ali.AliPay;
 import com.xqkj.baselibrary.utils.UIHelper;
 import com.xqkj.baselibrary.view.MainTabView;
 import com.xqkj.projectbase.R;
