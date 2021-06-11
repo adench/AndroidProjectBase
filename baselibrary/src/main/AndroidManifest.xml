@@ -18,10 +18,10 @@
     <uses-permission android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
 
-    <queries>
-        <package android:name="com.eg.android.AlipayGphone" /> <!-- 支付宝 -->
-        <package android:name="hk.alipay.wallet" /> <!-- AlipayHK -->
-    </queries>
+<!--    <queries>-->
+<!--        <package android:name="com.eg.android.AlipayGphone" /> &lt;!&ndash; 支付宝 &ndash;&gt;-->
+<!--        <package android:name="hk.alipay.wallet" /> &lt;!&ndash; AlipayHK &ndash;&gt;-->
+<!--    </queries>-->
 
     <application
         android:networkSecurityConfig="@xml/network_security_config"

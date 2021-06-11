@@ -19,6 +19,8 @@ allprojects {
     repositories {
         flatDir {
             dirs 'libs'
+        }
+        flatDir {
             dirs project(':baselibrary').file('libs')
         }
         google()
