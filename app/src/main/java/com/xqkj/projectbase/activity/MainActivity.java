@@ -11,6 +11,7 @@ import com.xqkj.baselibrary.net.BaseBean;
 import com.xqkj.baselibrary.net.HttpCallBack;
 import com.xqkj.baselibrary.net.HttpRequest;
 import com.xqkj.baselibrary.pay.ali.AliPay;
+import com.xqkj.baselibrary.pay.wechat.WechatPay;
 import com.xqkj.baselibrary.utils.UIHelper;
 import com.xqkj.baselibrary.view.MainTabView;
 import com.xqkj.projectbase.R;
@@ -63,6 +64,7 @@ public class MainActivity extends BaseActivity {
                 .setFragmentManager(getSupportFragmentManager())
                 .setTextColor(0,0)
                 .build();
+        WechatPay.getInstance().toPay(this,"");
     }
 
     @OnClick({R.id.iv_add})

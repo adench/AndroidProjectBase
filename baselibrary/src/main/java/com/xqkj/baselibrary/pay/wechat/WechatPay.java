@@ -1,6 +1,7 @@
 package com.xqkj.baselibrary.pay.wechat;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.modelpay.PayReq;
@@ -21,6 +22,10 @@ public class WechatPay implements PayFactory {
 
     @Override
     public void toPay(Context context, String orderInfo) {
+        if (TextUtils.isEmpty(orderInfo)) {
+            ToastUtil.showToast("请检查支付签名信息");
+            return;
+        }
         WechatPayParams params = (WechatPayParams) JsonUtils.jsonParser(orderInfo, WechatPayParams.class);
         PayReq request = new PayReq();
         request.appId = BaseApplication.WECHAT_APP_ID;///你的微信appid
